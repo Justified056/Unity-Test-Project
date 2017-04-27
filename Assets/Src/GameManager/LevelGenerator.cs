@@ -11,7 +11,7 @@ namespace LevelGen
         public int levelHeight;
 
 
-        public Sprite testSprite;
+        public Sprite[] testSpriteTextures;
         private Shader spriteDefaultShader;
 
         private Mesh levelMesh;
@@ -92,27 +92,20 @@ namespace LevelGen
 
         private void initMeshRenderer()
         {
-            if (testSprite != null)
+            if (testSpriteTextures.Length != 0)
             {
                 MeshRenderer levelMeshRenderer = GetComponent<MeshRenderer>();
-                levelMeshRenderer.material.mainTexture = testSprite.texture;
+                // levelMeshRenderer.materials = (Material[])testSpriteTextures;
                 spriteDefaultShader = Shader.Find("Sprites/Default");
                 levelMeshRenderer.material.shader = spriteDefaultShader;
             }
             else
             {
-                return; // get out if there is no sprite
+                return; // get out if there isn't a sprite
             }
         }
     
 
         // debug functions
-
-        // plz dont call this and the other generate.....could cause some interesting issues
-        //private IEnumerator generateOverTime(float secondsToWait)
-        //{
-
-            
-        //}
     }
 }

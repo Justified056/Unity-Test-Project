@@ -81,19 +81,21 @@ public class PlayerCharacter : MonoBehaviour
             GetComponent<SpriteRenderer>().sprite = playerSprite;
         }
 
-        Camera playerCamera = this.GetComponent<Camera>();
-
-        if(playerCamera != null)
-        {
-            // playerCamera.targetTexture = playerSprite;
-        }
+        Camera playerCamera = GetComponent<Camera>();
 
         SetChildSprites();
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.tag == "Impassable")
+        {
+            transform.Translate(transform.position);
+        }
+    }
 }
